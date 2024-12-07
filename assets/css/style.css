@@ -1,0 +1,24 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Body CSS */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1.6;
+  background-color: #000414;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
