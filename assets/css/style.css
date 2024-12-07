@@ -11,10 +11,11 @@ html, body {
 
 /* Body CSS */
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  line-height: 1.6;
-  background-color: #000414;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  background-color: #0B0B0B;
 }
 
 a {
@@ -22,3 +23,77 @@ a {
   color: inherit;
 }
 
+.logo {
+  width: 100%; /* Full width */
+  height: 30vh; /* Full viewport height */
+  padding-top: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-bottom: 20rem;
+}
+
+h2 {
+  font-size: 6rem;
+  color: white;
+  font-weight: 500;
+  letter-spacing: -3px;
+}
+
+span {
+  color: #cb9bff;
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto; /* Center the container */
+  display: flex; /* Flexbox for aligning heading and buttons */
+  align-items: center; /* Center align vertically */
+  gap: 40px; /* Add space between the heading and buttons */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.custom-button {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white; /* Text color */
+  background-color: transparent;
+  border: 2px solid #a992f7; /* Light purple border */
+  border-radius: 30px;
+  padding: 15px 35px;
+  position: relative;
+  transition: transform 0.3s ease; /* Smooth transition only for relevant properties */
+}
+
+.custom-button:hover {
+  transform: translateY(-5px); /* Smooth upward movement */
+}
+
+.custom-button img {
+  margin-left: 10px; /* Spacing between text and arrow */
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Align buttons horizontally */
+.buttons-container {
+  display: flex;
+  flex-direction: row; /* Arrange buttons in a row */
+  gap: 15px; /* Spacing between buttons */
+  padding-top: 10rem;
+}
