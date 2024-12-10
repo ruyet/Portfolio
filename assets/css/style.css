@@ -15,7 +15,12 @@ body {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  background-color: #0B0B0B;
+  background-color: #18121e;
+  position: relative;
+  overflow-x: hidden;
+  /* background: rgb(55,31,79);
+background: radial-gradient(circle, rgba(55,31,79,1) 0%, rgba(24,18,30,1) 100%); */
+
 }
 
 a {
@@ -31,7 +36,7 @@ a {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-bottom: 20rem;
+  padding-bottom: 10rem;
 }
 
 h2 {
@@ -39,6 +44,7 @@ h2 {
   color: white;
   font-weight: 500;
   letter-spacing: -3px;
+  
 }
 
 span {
@@ -48,15 +54,34 @@ span {
   font-style: italic;
 }
 
+/* Container */
 .container {
   width: 100%;
   max-width: 1600px;
-  margin: 0 auto; /* Center the container */
-  display: flex; /* Flexbox for aligning heading and buttons */
-  align-items: center; /* Center align vertically */
-  gap: 40px; /* Add space between the heading and buttons */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center horizontally */
 }
+
+/* Header Container */
+.header-container {
+  display: flex;
+  flex-direction: column; /* Stack logo, heading, and buttons */
+  align-items: center; /* Center all content */
+  text-align: center; /* Center align text */
+  gap: 40px; /* Add space between elements */
+  padding-bottom: 5rem; /* Add bottom padding */
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  flex-direction: row; /* Arrange buttons in a row */
+  gap: 15px; /* Spacing between buttons */
+  padding-bottom: 40rem;
+}
+
 
 .custom-button {
   font-family: "DM Sans", sans-serif;
@@ -90,10 +115,211 @@ span {
   height: 12px;
 }
 
-/* Align buttons horizontally */
-.buttons-container {
+.secondary-title {
+  padding-bottom: 50rem;
+}
+
+.portfolio-content {
+  width: 1000px;
+}
+
+.portfolio-content span {
+  font-size: 3rem;
+}
+
+.portfolio-content h3 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+/* Portfolio Content */
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 3rem; /* Space between items */
+  margin-top: 4rem;
+  max-width: 1000px; /* Set a wider container */
+}
+
+/* Grid Item */
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a1a; /* Fallback background color */
+  border-radius: 10px;
+  height: 400px; /* Set your preferred height */
   display: flex;
-  flex-direction: row; /* Arrange buttons in a row */
-  gap: 15px; /* Spacing between buttons */
-  padding-top: 10rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Tags (top-left corner) */
+.tags {
+  position: absolute;
+  z-index: 2;
+  text-align: left; /* Ensure left alignment */
+}
+
+.tags p {
+  font-size: 0.9rem;
+  color: white;
+  margin: 0.2rem 0;
+}
+
+/* Project Name (bottom-left corner) */
+.project-name {
+  position: absolute;
+  bottom: 1rem;
+  z-index: 2;
+  text-align: left; /* Ensure left alignment */
+}
+
+.project-name p {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: bold;
+  margin: 0; /* Remove extra spacing */
+}
+
+
+/* Image */
+.grid-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth zoom effect */
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+}
+
+
+/* Offset Logic */
+.grid-item {
+  --offset-y: 0px; /* Default offset */
+  transform: translateY(var(--offset-y)); /* Apply offset */
+  transition: transform 0.3s ease; /* Smooth transition for hover */
+}
+
+/* First column (top-down): No offset */
+.grid-item:nth-child(3n + 1) {
+  --offset-y: 0px;
+}
+
+/* Second column (top-down): 5rem offset */
+.grid-item:nth-child(3n + 2) {
+  --offset-y: 3rem;
+}
+
+/* Third column (top-down): 10rem offset */
+.grid-item:nth-child(3n) {
+  --offset-y: 6rem;
+}
+
+/* Image Hover Effect */
+.grid-item:hover img {
+  transform: scale(1.1); /* Zooms the image */
+  transition: transform 0.3s ease; /* Smooth zoom */
+}
+
+/* Overlay Hover */
+.grid-item:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.3); /* Lighten the overlay */
+}
+
+
+
+
+/* Grid Item */
+.grid-item {
+  background-color: #1a1a1a; /* Card background */
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease; /* Smooth hover animation */
+}
+
+
+
+.grid-item img {
+  width: 100%; /* Make images responsive */
+}
+
+.grid-item p {
+  color: white;
+  /* margin-top: 1rem; */
+}
+
+/* About Me Content */
+.aboutme-content {
+  width: 100%; /* Full width */
+  max-width: 1000px; /* Centered with max width */
+  margin: 15rem auto; /* Center vertically with spacing */
+  text-align: center; /* Center align title and subtitle */
+}
+
+.aboutme-content span {
+  font-size: 3rem;
+  color: #cb9bff;
+  font-family: "IBM Plex Serif", serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.aboutme-content h3 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* About Me Container */
+.aboutme-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Center the content */
+  gap: 4rem; /* Space between image and text */
+  margin-top: 4rem;
+}
+
+/* Profile Image */
+.profile-image {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  width: 200px;
+  height: 200px;
+  /* border-radius: 50%;  */
+  overflow: hidden;
+  /* border: 4px solid #cb9bff;  */
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image fits the circle */
+}
+
+/* About Me Text */
+.aboutme-text {
+  max-width: 800px; /* Limit text width */
+  color: white;
+  font-size: 1rem;
+  line-height: 1.8; /* Adjust line spacing for readability */
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  text-align: left;
 }
