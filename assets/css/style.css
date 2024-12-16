@@ -152,11 +152,14 @@ a {
     justify-content: space-between;
     position: relative;
     height: 400px;
-    /* Offset */
     transition: transform 0.3s ease;
     --offset-y: 0px;
     transform: translateY(var(--offset-y));
+    cursor: pointer; /* Make the card feel interactive */
+
 }
+
+
 
 /* ========== Overlay ========== */
 .overlay {
@@ -173,22 +176,49 @@ a {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+/* Make the whole card clickable */
+.card-link {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit the text color */
+    display: block; /* Make the entire card clickable */
+    position: relative; /* Ensure no layout shifts */
+}
+
 /* ========== Project Name Styling ========== */
 
 .project-name {
     position: absolute;
     bottom: 1rem;
-    left: 1rem;
     z-index: 2;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
     text-align: left;
+    display: inline-flex;
+    align-items: center;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    padding: 0 .25rem;
+
 }
 
-.project-name p {
-    font-size: 1.4rem;
-    color: white;
-    font-weight: bold;
-    margin: 0;
-    /* Remove extra spacing */
+.project-name::after {
+    content: attr(data-hover);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    color: #fff;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.grid-item:hover .project-name::after {
+    opacity: 1;
+    transform: translateY(0); /* Slide into view */
+}
+
+.grid-item:hover .project-name {
+    color: transparent; /* Hide text */
+    box-shadow: inset 100px 0 0 0 #cb9bff; /* Purple box appears */
 }
 
 .project-name a {
@@ -200,10 +230,9 @@ a {
     color: white;
     box-shadow: inset 0 0 0 0 #bf83ff;
     margin: 0 0.7rem;
-    padding: 0 .25rem;
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
-    position: relative; /* Required for pseudo-element */
-
+    padding: 0 0.25rem;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
 }
 
 .project-name a::after {
@@ -214,17 +243,31 @@ a {
     color: #fff;
     align-items: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px); /* Add transform to animate in */
+    
 }
 
-.project-name a:hover::after {
+.project-name a:hover::after,
+.grid-item:hover .project-name a::after {
     opacity: 1;
     transform: translateY(0);
 }
 
-.project-name a:hover {
+.project-name a:hover,
+.grid-item:hover .project-name a {
     color: transparent; /* Hide the original text */
     box-shadow: inset 100px 0 0 0 #cb9bff;
 }
+
+.project-name p {
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    /* Remove extra spacing */
+}
+
+
 
 /* ========== Image Styling ========== */
 .grid-item img {
@@ -270,7 +313,6 @@ a {
     position: absolute;
     z-index: 2;
     text-align: left;
-    /* Ensure left alignment */
 }
 
 .tags p {
@@ -399,18 +441,19 @@ a {
     }
 }
 
-/* Delays based on columns */
-.grid-item:nth-child(3n + 1) {
+/* Offset per columns - Target <a> elements */
+.card-link:nth-child(3n + 1) .grid-item {
     --offset-y: 0px;
 }
 
-.grid-item:nth-child(3n + 2) {
+.card-link:nth-child(3n + 2) .grid-item {
     --offset-y: 3rem;
 }
 
-.grid-item:nth-child(3n) {
+.card-link:nth-child(3n) .grid-item {
     --offset-y: 6rem;
 }
+
 
 /* Initial hidden state+fade */
 .fade-in-column {
