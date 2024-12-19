@@ -22,7 +22,7 @@ body {
 
 /* ========== Typography ========== */
 h2 {
-    font-size: clamp(2.9rem, 5vw, 6rem); /* Responsive font size */
+    font-size: clamp(2.7rem, 5vw, 6rem); /* Responsive font size */
     color: white;
     font-weight: 500;
     letter-spacing: -3px;
@@ -544,5 +544,27 @@ a {
         }
     .buttons-container {
         flex-direction: column
+    }
+}
+
+@media (max-width: 390px){
+    h2 {
+        font-size: clamp(2.3rem, 5vw, 6rem); /* Responsive font size */
+        letter-spacing: -1px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0px 330px;  
+        }
+        .card-link:nth-child(3n + 1) .grid-item,
+        .card-link:nth-child(3n + 2) .grid-item,
+        .card-link:nth-child(3n) .grid-item {
+            --offset-y: 0px;      /* grid-row-gap: 100px; */
+        }
+    .portfolio-content h3,
+    .aboutme-content h3,
+    .contact-content h3 {
+        font-size: 1rem;
     }
 }
