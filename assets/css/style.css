@@ -539,7 +539,9 @@ a {
         }
     .aboutme-text {
         text-align: center;
-    }
+        width: 100%;
+        max-width: 360px;
+        }
     .buttons-container {
         flex-direction: column
     }
