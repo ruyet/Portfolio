@@ -514,8 +514,8 @@ a {
         width: 120px; /* Even smaller size for very narrow screens */
     }
     html, body {
-        height: 100%;
-        scroll-behavior: smooth;
+        /* height: 100%;
+        scroll-behavior: smooth; */
         overflow-x: hidden;
     }
 }
