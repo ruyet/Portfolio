@@ -42,22 +42,31 @@ function goBack(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const columns = document.querySelectorAll(".fade-in-column");
+    const fadeInColumns = document.querySelectorAll(".fade-in-column");
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
+    // Check if the viewport width is <= 900px (mobile)
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+    if (isMobile) {
+        // For mobile: Add the `visible` class on load
+        fadeInColumns.forEach((column, index) => {
+            setTimeout(() => {
+                column.classList.add("visible");
+            }, index * 200); // Optional delay for cascading effect
+        });
+    } else {
+        // For desktop: Trigger the fade-in effect on scroll
+        const handleScroll = () => {
+            fadeInColumns.forEach((column) => {
+                const rect = column.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    column.classList.add("visible");
                 }
             });
-        },
-        {
-            threshold: 0.2, // Trigger when 20% of the element is visible
-        }
-    );
+        };
 
-    columns.forEach((column) => {
-        observer.observe(column);
-    });
+        // Attach the scroll event listener
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Trigger on initial load in case some elements are already in view
+    }
 });
