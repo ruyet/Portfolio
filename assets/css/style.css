@@ -8,8 +8,6 @@
 html, body {
     height: 100%;
     scroll-behavior: smooth;
-    overflow-x: hidden;
-
 }
 
 /* ========== Body Styling ========== */
@@ -24,13 +22,13 @@ body {
 
 /* ========== Typography ========== */
 h2 {
-    font-size: 6rem;
+    font-size: clamp(2.9rem, 5vw, 6rem); /* Responsive font size */
     color: white;
     font-weight: 500;
     letter-spacing: -3px;
 }
 
-span {
+.title span {
     color: #cb9bff;
     font-family: "IBM Plex Serif", serif;
     font-weight: 100;
@@ -82,11 +80,6 @@ a {
     padding-bottom: 7rem;
 }
 
-.logo img {
-    width: 100%;
-    max-width: 150px;
- }
-
 /* ========== Container ========== */
 .container {
     width: 100%;
@@ -95,17 +88,15 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem; /* Add padding to avoid left-right clipping */
 }
 
 /* ========== Header Container ========== */
 .header-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align content */
+    align-items: center;
     text-align: center;
     gap: 40px;
-    width: 100%; /* Ensure it spans the viewport */
 }
 
 /* ========== Buttons Styling ========== */
@@ -141,7 +132,6 @@ a {
     margin-left: 10px;
 }
 
-
 .arrow-icon {
     width: 12px;
     height: 12px;
@@ -166,12 +156,11 @@ a {
 /* ========== Grid Container ========== */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust column size */
-    gap: 2rem; /* Spacing between items */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
     margin-top: 4rem;
-    padding: 0 1rem; /* Add spacing for smaller screens */
+    max-width: 1000px;
 }
-
 
 .grid-item {
     background-color: #1a1a1a;
@@ -188,6 +177,7 @@ a {
     --offset-y: 0px;
     transform: translateY(var(--offset-y));
     cursor: pointer; /* Make the card feel interactive */
+
 }
 
 
@@ -495,4 +485,62 @@ a {
 .fade-in-column.visible {
     opacity: 1;
     transform: translateY(0); /* Reset position */
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 600px) {
+    .logo img {
+        width: 100px; /* Smaller size for mobile screens */
+    }
+    .portfolio-content h3,
+    .aboutme-content h3,
+    .contact-content h3 {
+        font-size: 1.2rem;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0px 310px;  
+        }
+        .card-link:nth-child(3n + 1) .grid-item,
+        .card-link:nth-child(3n + 2) .grid-item,
+        .card-link:nth-child(3n) .grid-item {
+            --offset-y: 0px;      /* grid-row-gap: 100px; */
+        }
+}
+
+@media (max-width: 1200px) {
+    .logo img {
+        width: 120px; /* Even smaller size for very narrow screens */
+    }
+    html, body {
+        height: 100%;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutme-container {
+        flex-direction: column
+    }
+    .aboutme-content {
+        margin: 15rem auto 10rem;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0px 310px;  
+        }
+        .card-link:nth-child(3n + 1) .grid-item,
+        .card-link:nth-child(3n + 2) .grid-item,
+        .card-link:nth-child(3n) .grid-item {
+            --offset-y: 0px;      /* grid-row-gap: 100px; */
+        }
+    .aboutme-text {
+        text-align: center;
+    }
+    .buttons-container {
+        flex-direction: column
+    }
 }
