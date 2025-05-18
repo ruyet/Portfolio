@@ -1,74 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/project.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Serif:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Serif:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
     <title>Interactive Map Project</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="project-container">
-      <a href="index.html" class="back-button" onclick="goBack(event)">
-        <img src="components/Arrow.png" alt="Back Arrow" /> Go Back
-      </a>
-
-      <div class="project-header">
-        <span>interactive map of Eindhoven</span>
-        <h3>a dynamic map project for Stichting 18 September.</h3>
-        <img
-          src="components/Projects_Interactive_Map_Mockup.jpg"
-          alt="Interactive Map"
-        />
-      </div>
-      <div class="buttons-container">
-        <a
-          href="https://i507444.hera.fontysict.net/Interactive_Map/"
-          class="custom-button"
-          target="_blank"
-        >
-          <p>visit website</p>
-          <img src="components/Arrow.png" alt="arrow" class="arrow-icon" />
+        <a href="index.html" class="back-button" onclick="goBack(event)">
+            <img src="components/Arrow.png" alt="Back Arrow" /> Go Back
         </a>
-      </div>
 
-      <section class="project-description">
-        <p>
-          The Interactive Map of Eindhoven is a web project designed entirely by
-          hand, without relying on pre-existing frameworks, using HTML, CSS, and
-          JavaScript. As the main developer, I focused on creating a dynamic map
-          with seamless zoom, drag, and interactive marker functionalities,
-          providing users with a smooth and engaging experience.
-        </p>
-        <img
-          src="components/Projects_Interactive_Map_popup.png"
-          alt="Another Project Image"
-        />
-        <p>
-          Key features include a dynamic zoom function that ensures optimal
-          visibility on any device, draggable navigation for intuitive
-          exploration, and interactive pop-ups offering historical insights and
-          Google Maps directions. The decision to hand-code the entire project
-          allowed for full customization and a deeper understanding of the
-          technical challenges.
-        </p>
+        <div class="project-header">
+            <span>interactive map of Eindhoven</span>
+            <h3>a dynamic map project for Stichting 18 September.</h3>
+            <img src="components/Projects_Interactive_Map_Mockup.jpg" alt="Interactive Map" />
+        </div>
+        <div class="buttons-container">
+            <a href="https://i507444.hera.fontysict.net/InteractiveMapEIN/" class="custom-button" target="_blank">
+                <p>visit website</p>
+                <img src="components/Arrow.png" alt="arrow" class="arrow-icon" />
+            </a>
+        </div>
 
-        <p>
-          The development process included resolving conflicts between different
-          zoom implementations and integrating custom pop-up designs while
-          ensuring compatibility. Overcoming these challenges significantly
-          improved my coding and problem-solving skills. The final product
-          serves as both a navigational tool and an educational resource,
-          showcasing Eindhoven’s rich history.
-        </p>
-      </section>
+        <section class="project-description">
+            <p>
+                This project was built for Stichting 18 September and aimed to create an interactive, educational map of historical locations in Eindhoven. I was the main developer and focused on building the map from scratch using HTML, CSS, and JavaScript—no frameworks.
+            </p>
+            <img src="components/Projects_Interactive_Map_popup.png" alt="Another Project Image" />
+            <p>
+                Key features include draggable navigation, smooth zooming based on screen size, and interactive markers that show historical info and Google Maps directions. The map was designed to work fluidly across devices, with a custom scaling system I implemented
+                to avoid distortion or overflow.
+            </p>
+
+            <p>
+                On the UX side, we followed a full design process: low-fidelity sketches, individual mid-fidelity prototypes in Figma, then merging and testing high-fidelity versions through A/B testing. Feedback guided final design decisions to improve clarity and navigation.
+            </p>
+            <p>
+                This project challenged me technically—especially with merging different codebases and debugging conflicts in zoom behavior and pop-up styling. It taught me how to balance usability with performance and improved both my problem-solving and front-end development
+                skills.
+            </p>
+        </section>
     </div>
-  </body>
+</body>
+
 </html>
