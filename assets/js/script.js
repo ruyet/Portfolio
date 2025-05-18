@@ -32,14 +32,43 @@ window.addEventListener('load', () => {
     }
 });
 
+// function goBack(event) {
+//     event.preventDefault();
+//     if (window.history.length > 1) {
+//         window.history.back();
+//     } else {
+//         window.location.href = 'index.html';
+//     }
+// }
+
 function goBack(event) {
     event.preventDefault();
-    if (window.history.length > 1) {
-        window.history.back();
-    } else {
-        window.location.href = 'index.html';
+    const currentUrl = new URL(window.location.href);
+    const from = currentUrl.searchParams.get("from");
+
+    if (from) {
+        sessionStorage.setItem("scrollToProject", from);
     }
+
+    window.location.href = "index.html";
 }
+
+// When index.html loads
+window.addEventListener("load", () => {
+    const projectId = sessionStorage.getItem("scrollToProject");
+    if (projectId) {
+        sessionStorage.removeItem("scrollToProject");
+
+        // Wait for rendering to finish before scrolling
+        setTimeout(() => {
+            const el = document.getElementById(`portfolio-${projectId}`);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }, 400); // Tweak if needed
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const fadeInColumns = document.querySelectorAll(".fade-in-column");

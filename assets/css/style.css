@@ -181,17 +181,31 @@ a {
 
 /* ========== Grid Container ========== */
 
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    /* adds side spacing */
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
     margin-top: 4rem;
     max-width: 1000px;
+    width: 100%;
     justify-content: center;
+    /* aligns content inside grid horizontally */
 }
 
-.grid-container>.card-link:nth-last-child(1):nth-child(3n+1) {
+
+/* This makes sure if the last row has only 1 item, it will be centered */
+
+.grid-container>*:nth-last-child(1):nth-child(3n + 1) {
     grid-column: 2 / span 1;
+}
+
+.grid-container>div:nth-last-child(1):nth-child(3n+1) {
     margin-top: 3rem;
 }
 
@@ -256,10 +270,12 @@ a {
     font-weight: bold;
     color: white;
     text-align: left;
+    justify-content: left;
     display: inline-flex;
     align-items: center;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
     padding: 0 .25rem;
+    width: 100%;
 }
 
 .project-name::after {
@@ -269,6 +285,7 @@ a {
     opacity: 0;
     color: #fff;
     align-items: center;
+    text-align: left;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -537,15 +554,15 @@ a {
 
 /* Offset per columns - Target <a> elements */
 
-.card-link:nth-child(3n + 1) .grid-item {
+.grid-container>div:nth-child(3n + 1) .grid-item {
     --offset-y: 0px;
 }
 
-.card-link:nth-child(3n + 2) .grid-item {
+.grid-container>div:nth-child(3n + 2) .grid-item {
     --offset-y: 3rem;
 }
 
-.card-link:nth-child(3n) .grid-item {
+.grid-container>div:nth-child(3n) .grid-item {
     --offset-y: 6rem;
 }
 
@@ -568,10 +585,115 @@ a {
 
 /* Media Query for Small Screens */
 
+@media (max-width: 1200px) {
+    .logo img {
+        width: 120px;
+    }
+    html,
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 999px) {
+    .aboutme-container {
+        flex-direction: column;
+    }
+    .aboutme-content {
+        margin: 15rem auto 10rem;
+    }
+    .grid-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .grid-container {
+        display: flex;
+        /* disable grid */
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding: 0 2rem;
+        width: 100%;
+        max-width: 850px;
+    }
+    .grid-container>div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .card-link {
+        width: 100%;
+    }
+    .grid-item {
+        width: 100%;
+        max-width: 100%;
+        transform: none !important;
+        /* 🔥 Fix the visual position */
+        --offset-y: 0px !important;
+        /* 🔥 Kill leftover offset on mobile */
+    }
+    .aboutme-text {
+        text-align: center;
+        width: 100%;
+        max-width: 360px;
+    }
+    .buttons-container {
+        flex-direction: column;
+    }
+    .grid-container>div:nth-last-child(1):nth-child(3n+1) {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 790px) {
+    h2 {
+        font-size: clamp(2.3rem, 5vw, 6rem);
+        letter-spacing: -1px;
+    }
+    .grid-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 0 1.5rem;
+        width: 100%;
+        max-width: 400px;
+    }
+    .grid-container>div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .card-link {
+        width: 100%;
+    }
+    .grid-item {
+        width: 100%;
+        max-width: 100%;
+        transform: none !important;
+        --offset-y: 0px !important;
+    }
+    .portfolio-content h3,
+    .aboutme-content h3,
+    .contact-content h3 {
+        font-size: 1rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+    .grid-container>div:nth-last-child(1):nth-child(3n+1) {
+        margin-top: 0;
+    }
+}
+
 @media (max-width: 600px) {
     .logo img {
         width: 100px;
-        /* Smaller size for mobile screens */
     }
     .portfolio-content h3,
     .aboutme-content h3,
@@ -583,82 +705,15 @@ a {
         line-height: 1.4;
     }
     .grid-container {
-        display: grid;
         grid-template-columns: 1fr;
-        padding: 0px 310px;
+        padding: 0 1rem;
     }
     .card-link:nth-child(3n + 1) .grid-item,
     .card-link:nth-child(3n + 2) .grid-item,
     .card-link:nth-child(3n) .grid-item {
         --offset-y: 0px;
-        /* grid-row-gap: 100px; */
     }
-}
-
-@media (max-width: 1200px) {
-    .logo img {
-        width: 120px;
-        /* Even smaller size for very narrow screens */
-    }
-    html,
-    body {
-        /* height: 100%;*/
-        overflow-x: hidden;
-    }
-}
-
-@media (max-width: 999px) {
-    .aboutme-container {
-        flex-direction: column
-    }
-    .aboutme-content {
-        margin: 15rem auto 10rem;
-    }
-    .grid-container>.card-link:nth-last-child(1):nth-child(3n+1) {
-        grid-column: 1 / span 1;
-        margin-top: 2rem;
-    }
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        padding: 0px 110px;
-    }
-    .card-link:nth-child(3n + 1) .grid-item,
-    .card-link:nth-child(3n + 2) .grid-item,
-    .card-link:nth-child(3n) .grid-item {
-        --offset-y: 0px;
-        /* grid-row-gap: 100px; */
-    }
-    .aboutme-text {
-        text-align: center;
-        width: 100%;
-        max-width: 360px;
-    }
-    .buttons-container {
-        flex-direction: column
-    }
-}
-
-@media (max-width: 790px) {
-    h2 {
-        font-size: clamp(2.3rem, 5vw, 6rem);
-        /* Responsive font size */
-        letter-spacing: -1px;
-    }
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        padding: 0px 330px;
-    }
-    .card-link:nth-child(3n + 1) .grid-item,
-    .card-link:nth-child(3n + 2) .grid-item,
-    .card-link:nth-child(3n) .grid-item {
-        --offset-y: 0px;
-        /* grid-row-gap: 100px; */
-    }
-    .portfolio-content h3,
-    .aboutme-content h3,
-    .contact-content h3 {
-        font-size: 1rem;
+    .grid-container>div:last-child {
+        justify-self: center;
     }
 }
