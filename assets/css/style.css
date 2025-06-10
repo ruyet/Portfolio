@@ -695,6 +695,9 @@ a {
     .logo img {
         width: 100px;
     }
+    .logo {
+        padding-top: 12rem;
+    }
     .portfolio-content h3,
     .aboutme-content h3,
     .contact-content h3 {
